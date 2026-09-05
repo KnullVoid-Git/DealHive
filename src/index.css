@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* HSL Hue Channels */
+  --brand-h: 244;
+  --brand-s: 100%;
+  --brand-l: 70%;       /* Base: #6C63FF */
+
+  /* Precision Easing Curves */
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);    /* Fast, clean deceleration */
+  --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1); /* Elegant slow modal slide */
+
+  /* Primary Brand Palette */
+  --color-brand-rgb: 108 99 255;
+  --color-brand: rgb(var(--color-brand-rgb));
+  --color-brand-dark: #4B44CC;
+  --color-brand-light: rgba(108 99 255 / 0.1);
+  --color-brand-glow: rgba(108 99 255 / 0.18);
+
+  /* Base / Neutral Palette */
+  --color-bg: #F3F3FA;
+  --color-sidebar-bg: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #ECECF4;
+  --color-border: #E4E4EC;
+  --color-border-strong: #D4D4E0;
+
+  /* Text Palette */
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #9CA3AF;
+  --color-text-faint: #D1D5DB;
+  --color-text-inverse: #FFFFFF;
+
+  /* Semantic Colors (Status System) */
+  --color-success: #16A34A;
+  --color-success-bg: #F0FDF4;
+  --color-success-border: #BBF7D0;
+  
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+
+  --color-danger: #DC2626;
+  --color-danger-bg: #FEF2F2;
+  --color-danger-border: #FECACA;
+
+  --color-info: #2563EB;
+  --color-info-bg: #EFF6FF;
+  --color-info-border: #BFDBFE;
+
+  --color-neutral: #6B7280;
+  --color-neutral-bg: #F9FAFB;
+  --color-neutral-border: #E5E7EB;
+
+  /* Deal Stage Color Map */
+  --color-stage-negotiating: #6C63FF;
+  --color-stage-contracted: #2563EB;
+  --color-stage-in-production: #D97706;
+  --color-stage-draft-submitted: #7C3AED;
+  --color-stage-revisions: #DC2626;
+  --color-stage-approved: #059669;
+  --color-stage-published: #16A34A;
+  --color-stage-payment-pending: #EA580C;
+  --color-stage-completed: #15803D;
+
+  /* Border Radius Reference */
+  --radius-xs: 5px;
+  --radius-sm: 7px;
+  --radius-md: 9px;
+  --radius-lg: 16px;
+  --radius-xl: 14px;
+  --radius-2xl: 22px;
+  --radius-full: 9999px;
+
+  /* Shadow System */
+  --shadow-sm: 0 2px 8px rgba(108, 99, 255, 0.015), 0 1px 3px rgba(0, 0, 0, 0.01);
+  --shadow-md: 0 10px 30px rgba(108, 99, 255, 0.025), 0 2px 10px rgba(0, 0, 0, 0.015);
+  --shadow-lg: 0 20px 50px rgba(108, 99, 255, 0.04), 0 4px 20px rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 16px 48px rgba(17, 24, 39, 0.13), 0 8px 16px rgba(17, 24, 39, 0.06);
+  --shadow-brand: 0 4px 14px rgba(108, 99, 255, 0.30);
+  --shadow-focus: 0 0 0 3px rgba(108, 99, 255, 0.14);
+
+  /* Timing */
+  --duration-snap: 0ms;
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-standard: 200ms;
+  --duration-deliberate: 300ms;
+  --duration-slow: 500ms;
+
+  /* Easing Curves */
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+  --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Typography Rules */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  color: var(--color-text-primary);
+}
+
+.sora-heading {
+  font-family: 'Sora', sans-serif;
+}
+
+[data-type="number"], .num {
+  font-family: 'DM Mono', monospace !important;
+}
+
+/* Animation utilities */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-sweep {
+  background: linear-gradient(90deg, #E4E7F2 25%, #F4F5FA 50%, #E4E7F2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Custom scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base focus and active styling for inputs */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-brand) !important;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.14) !important;
+  transition: all 150ms ease;
+}
+
+/* Standard transitions */
+.transition-standard {
+  transition: all var(--duration-standard) var(--ease-out);
+}
+.transition-fast {
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.transition-spring {
+  transition: all var(--duration-standard) var(--spring);
+}
+
+/* Micro-Animation Classes */
+.animate-scale-in {
+  animation: scaleIn 0.25s var(--ease-snappy) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.35s var(--ease-snappy) forwards;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Confetti and Premium Glow animations */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-5vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.45);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Global Dark Mode Theme Overrides */
+:root[data-theme="dark"] {
+  --color-bg: #07070C;
+  --color-sidebar-bg: #0A0A10;
+  --color-surface: rgba(13, 13, 23, 0.65);
+  --color-surface-2: rgba(22, 22, 38, 0.45);
+  --color-border: rgba(162, 155, 254, 0.08);
+  --color-border-strong: rgba(162, 155, 254, 0.16);
+
+  /* Pastel/Soft-lavender theme overrides in dark mode */
+  --color-brand-rgb: 162 155 254;
+  --color-brand: rgb(var(--color-brand-rgb));
+  --color-brand-dark: #8178F6;
+  --color-brand-light: rgba(162 155 254 / 0.12);
+  --color-brand-glow: rgba(162 155, 254 / 0.22);
+
+  /* Text Palette */
+  --color-text-primary: #F3F4F6;
+  --color-text-secondary: #D1D5DB;
+  --color-text-muted: #9CA3AF;
+  --color-text-faint: #252836;
+
+  /* Adjust theme light panels to fit dark mode aesthetics */
+  --color-success-bg: rgba(22, 163, 74, 0.08);
+  --color-success-border: rgba(22, 163, 74, 0.25);
+  --color-warning-bg: rgba(217, 119, 6, 0.08);
+  --color-warning-border: rgba(217, 119, 6, 0.25);
+  --color-danger-bg: rgba(220, 38, 38, 0.08);
+  --color-danger-border: rgba(220, 38, 38, 0.25);
+  --color-info-bg: rgba(37, 99, 235, 0.08);
+  --color-info-border: rgba(37, 99, 235, 0.25);
+}
+
+/* Glassmorphism backdrop-blur overlays in dark theme */
+:root[data-theme="dark"] .bg-surface,
+:root[data-theme="dark"] .bg-surface-2,
+:root[data-theme="dark"] .bg-sidebar-bg {
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+/* Ambient purple glowing background gradients in dark theme */
+:root[data-theme="dark"] body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(162, 155, 254, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(162, 155, 254, 0.08) 0%, transparent 45%);
+  z-index: -1;
+}
+
+.progress-track-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-surface-2) 0px,
+    var(--color-surface-2) 3.5px,
+    var(--color-surface) 3.5px,
+    var(--color-surface) 7px
+  );
+}
+
+
+

@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build
+dist/
+build/
+
+# Environment files and secrets
+.env
+.env.local
+.env.*.local
+
+# Temporary / Scratch backups
+beautified_code/
+scratch/
+src_backup_current_run/
+src_truncated_backup/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
